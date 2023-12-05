@@ -40,7 +40,6 @@ public class MovieServiceImpl implements MovieService {
     }
 
 
-    @Nullable
     private MovieListDto getMovieListDto(Call<MovieListDto> moviesCall) {
         MovieListDto movieResponse = null;
         try {
