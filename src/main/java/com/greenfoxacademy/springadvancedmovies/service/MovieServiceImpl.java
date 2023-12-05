@@ -2,6 +2,7 @@ package com.greenfoxacademy.springadvancedmovies.service;
 
 import com.greenfoxacademy.springadvancedmovies.dto.MovieListDto;
 import com.greenfoxacademy.springadvancedmovies.util.RetrofitUtil;
+import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import retrofit2.Call;
@@ -28,10 +29,22 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieListDto getMovies() {
-        Call<MovieListDto> getMoviesCall = movieApi.getMovies(AUTH_TOKEN, CONTENT_TYPE);
+        Call<MovieListDto> allMoviesCall = movieApi.getMovies(AUTH_TOKEN, CONTENT_TYPE);
+        return getMovieListDto(allMoviesCall);
+    }
+
+    @Override
+    public MovieListDto getMovieByName(String title) {
+        Call<MovieListDto> moviesByNameCall = movieApi.getMovieByName(AUTH_TOKEN, CONTENT_TYPE, title);
+        return getMovieListDto(moviesByNameCall);
+    }
+
+
+    @Nullable
+    private MovieListDto getMovieListDto(Call<MovieListDto> moviesCall) {
         MovieListDto movieResponse = null;
         try {
-            Response<MovieListDto> response = getMoviesCall.execute();
+            Response<MovieListDto> response = moviesCall.execute();
             if (response.isSuccessful() && response.body() != null) {
                 movieResponse = response.body();
             }

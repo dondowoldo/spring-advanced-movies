@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 public interface MovieService {
 
     public MovieListDto getMovies();
+
+    public MovieListDto getMovieByName(String title);
 }

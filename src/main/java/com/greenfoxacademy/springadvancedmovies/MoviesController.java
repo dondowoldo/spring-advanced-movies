@@ -18,4 +18,9 @@ public class MoviesController {
     public MovieListDto test() {
         return movieService.getMovies();
     }
+
+    @GetMapping("/search")
+    public MovieListDto search(String title) {
+        return movieService.getMovieByName(title);
+    }
 }
