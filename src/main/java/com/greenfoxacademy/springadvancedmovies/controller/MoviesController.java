@@ -1,4 +1,4 @@
-package com.greenfoxacademy.springadvancedmovies;
+package com.greenfoxacademy.springadvancedmovies.controller;
 
 
 import com.greenfoxacademy.springadvancedmovies.dto.MovieListDto;
