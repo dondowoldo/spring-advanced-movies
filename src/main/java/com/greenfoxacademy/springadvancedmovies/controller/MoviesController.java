@@ -6,6 +6,8 @@ import com.greenfoxacademy.springadvancedmovies.service.MovieService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
 public class MoviesController {
     private final MovieService movieService;
@@ -22,5 +24,10 @@ public class MoviesController {
     @GetMapping("/search")
     public MovieListDto search(String title) {
         return movieService.getMovieByName(title);
+    }
+
+    @GetMapping("/home")
+    public String home(Principal principal) {
+        return "Hello " + principal.getName();
     }
 }
