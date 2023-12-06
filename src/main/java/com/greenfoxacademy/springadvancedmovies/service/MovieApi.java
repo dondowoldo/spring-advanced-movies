@@ -1,6 +1,7 @@
 package com.greenfoxacademy.springadvancedmovies.service;
 
 import com.greenfoxacademy.springadvancedmovies.dto.MovieListDto;
+import com.greenfoxacademy.springadvancedmovies.model.JwtToken;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -19,6 +20,4 @@ public interface MovieApi {
             @Header("Content-Type") String CONTENT_TYPE,
             @Query("query") String title
     );
-
-
 }
